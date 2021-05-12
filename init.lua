@@ -22,11 +22,7 @@ g.auto_save = 0
 -- colorscheme related stuff
 cmd "syntax on"
 
-local base16 = require "base16"
-base16(base16.themes["onedark"], true)
-
 require "custom_highlights"
-
 -- blankline
 
 local indent = 2
@@ -43,7 +39,6 @@ g.indent_blankline_show_first_indent_level = false
 require "treesitter-nvim"
 require "mappings"
 
-require "telescope-nvim"
 require "nvimTree"
 
 -- git signs , lsp symbols etc
@@ -56,5 +51,7 @@ vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
 ]], false)
 
--- setup for TrueZen.nvim
-require "zenmode"
+g.vim_json_conceal = 0
+g.indentLine_conceallevel = 0
+g.ayucolor = "dark"
+cmd "colorscheme ayu"

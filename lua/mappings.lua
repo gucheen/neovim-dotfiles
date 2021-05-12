@@ -33,3 +33,6 @@ map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
 map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
 
 map("n", "<C-s>", [[ <Cmd> w <CR>]], opt) -- save
+
+map("i", "kj", "<Esc>", opt) -- save
+map("n", ";", ":", opt) -- save
