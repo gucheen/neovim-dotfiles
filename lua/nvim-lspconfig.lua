@@ -38,7 +38,7 @@ end
 local lspconf = require("lspconfig")
 
 -- these langs require same lspconfig so put em all in a table and loop through!
-local servers = {"html", "cssls", "tsserver", "pyright", "bashls", "clangd", "ccls"}
+local servers = {"html", "cssls", "tsserver"}
 
 for _, lang in ipairs(servers) do
     lspconf[lang].setup {
@@ -46,12 +46,6 @@ for _, lang in ipairs(servers) do
         root_dir = vim.loop.cwd
     }
 end
-
--- vls conf example
-local vls_binary = "/usr/local/bin/vls"
-lspconf.vls.setup {
-    cmd = {vls_binary}
-}
 
 -- lua lsp settings
 USER = "/home/" .. vim.fn.expand("$USER")
