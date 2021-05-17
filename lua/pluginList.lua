@@ -25,7 +25,7 @@ return require("packer").startup(
         use "glepnir/galaxyline.nvim"
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
-        
+
         -- snippet support
         use "hrsh7th/vim-vsnip"
         use "rafamadriz/friendly-snippets"
@@ -40,6 +40,7 @@ return require("packer").startup(
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
+        use "folke/which-key.nvim"
 
         -- discord rich presence
         --use "andweeb/presence.nvim"
