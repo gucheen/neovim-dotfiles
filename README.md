@@ -1,3 +1,5 @@
+[![GitHub Super-Linter](https://github.com/siduck76/neovim-dotfiles/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 An attempt to make neovim (cli version) as functional as an IDE while being very eyecandy.
 
 # Screenshots -
@@ -147,7 +149,7 @@ git clone https://github.com/wbthomason/packer.nvim\
 npm config set prefix=~/.node_modules
 npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
 
-(ADD ~/.node_modules at your PATH)
+(ADD ~/.node_modules/bin at your PATH)
 ```
 
 To setup any language server , follow this guide https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md and search up the needed LSP. For example if I needed clangd's lsp server :
@@ -200,7 +202,7 @@ I'd install it first and add its setup line :
 - **Formatting code**
 
 - leader + <kbd> f </kbd> <kbd> m </kbd> formats or beautifies the code in current window via neoformat
-  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check (this)[https://github.com/sbdchd/neoformat].
+  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check [this](https://github.com/sbdchd/neoformat).
 
 - **Neoscroll**
 

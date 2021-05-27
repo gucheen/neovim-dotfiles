@@ -1,8 +1,7 @@
 -- load all plugins
 require "pluginList"
-require "file-icons"
-
 require "misc-utils"
+
 require "top-bufferline"
 require "statusline"
 
@@ -25,8 +24,6 @@ cmd "syntax on"
 require "custom_highlights"
 -- blankline
 
-local indent = 2
-
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
 
@@ -39,7 +36,8 @@ g.indent_blankline_show_first_indent_level = false
 require "treesitter-nvim"
 require "mappings"
 
-require "nvimTree"
+require "nvimTree" -- file tree stuff
+require "file-icons"
 
 -- git signs , lsp symbols etc
 require "gitsigns-nvim"
@@ -50,6 +48,8 @@ require("lspkind").init()
 vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
 ]], false)
+
+require "whichkey"
 
 g.vim_json_conceal = 0
 g.indentLine_conceallevel = 0
