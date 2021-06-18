@@ -1,7 +1,5 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+local packer = require("packer")
+local use = packer.use
 
 -- using { } for using different branch , loading plugin with certain commands etc
 return packer.startup(
@@ -40,7 +38,6 @@ return packer.startup(
         use "nvim-lua/popup.nvim"
 
         -- misc
-        use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
