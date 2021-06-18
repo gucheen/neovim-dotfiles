@@ -36,3 +36,5 @@ map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
 
 map("i", "kj", "<Esc>", opt)
 map("n", ";", ":", opt)
+map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})

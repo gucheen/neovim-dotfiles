@@ -4,7 +4,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 -- using { } for using different branch , loading plugin with certain commands etc
-return require("packer").startup(
+return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
@@ -26,6 +26,9 @@ return require("packer").startup(
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
 
+        -- Comment
+        use "terrortylor/nvim-comment"
+
         -- snippet support
         use "hrsh7th/vim-vsnip"
         use "rafamadriz/friendly-snippets"
@@ -37,6 +40,7 @@ return require("packer").startup(
         use "nvim-lua/popup.nvim"
 
         -- misc
+        use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
