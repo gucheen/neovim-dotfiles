@@ -159,7 +159,7 @@ return packer.startup(
         }
 
         use {
-            'ayu-theme/ayu-vim'
+            'ayu-theme/ayu-vim',
             config = function()
                 g.ayucolor = "dark"
                 cmd "colorscheme ayu"
