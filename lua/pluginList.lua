@@ -78,19 +78,8 @@ return packer.startup(
         }
 
         use "kyazdani42/nvim-web-devicons"
-        use {
-            "nvim-telescope/telescope.nvim",
-            requires = {
-                {"nvim-lua/popup.nvim"},
-                {"nvim-lua/plenary.nvim"},
-                {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
-                {"nvim-telescope/telescope-media-files.nvim"}
-            },
-            cmd = "Telescope",
-            config = function()
-                require("telescope-nvim").config()
-            end
-        }
+        use "nvim-lua/popup.nvim"
+        use "nvim-lua/plenary.nvim"
 
         -- git stuff
         use {
@@ -161,8 +150,7 @@ return packer.startup(
         use {
             'ayu-theme/ayu-vim',
             config = function()
-                g.ayucolor = "dark"
-                cmd "colorscheme ayu"
+                vim.cmd("colorscheme ayu")
             end
         }
     end,

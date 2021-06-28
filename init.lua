@@ -8,6 +8,9 @@ local g = vim.g
 g.mapleader = " "
 g.auto_save = 0
 
+g.nvchad_theme = "onedark"
+g.ayucolor = "dark"
+
 require "highlights"
 require "mappings"
 require "file-icons"
