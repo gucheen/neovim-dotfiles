@@ -1,6 +1,7 @@
 local cmd = vim.cmd
 
-local colors = require "themes/onedark"
+local global_theme = "themes/"..vim.g.nvchad_theme
+local colors = require(global_theme)
 
 local white = colors.white
 local darker_black = colors.darker_black
@@ -66,6 +67,8 @@ fg_bg("DiffModified", nord_blue, "none")
 -- NvimTree
 fg("NvimTreeFolderIcon", blue)
 fg("NvimTreeFolderName", blue)
+fg("NvimTreeOpenedFolderName", blue)
+fg("NvimTreeEmptyFolderName", blue)
 fg("NvimTreeIndentMarker", one_bg2)
 fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
@@ -115,8 +118,8 @@ fg_bg("BufferLineIndicator", black2, black2)
 fg_bg("BufferLineIndicatorSelected", black, black)
 
 -- separators
-fg_bg("BufferLineSeparator", line, black2)
-fg_bg("BufferLineSeparatorVisible", line, black2)
+fg_bg("BufferLineSeparator", black2, black2)
+fg_bg("BufferLineSeparatorVisible", black2, black2)
 fg_bg("BufferLineSeparatorSelected", black, black2)
 
 -- modified buffers
@@ -134,7 +137,7 @@ fg_bg("BufferLineCLoseButtonSelected", red, black)
 fg("DashboardHeader", grey_fg)
 fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
-fg("DashboardFooter", black)
+fg("DashboardFooter", grey_fg)
 
--- Default nvim bg
+-- Default nvim bg (based on terminal bg)
 -- cmd "hi Normal guibg=#1e222a"

@@ -1,4 +1,5 @@
-local colors = require "themes/onedark"
+local global_theme = "themes/" .. vim.g.nvchad_theme
+local colors = require(global_theme)
 
 require "nvim-web-devicons".setup {
     override = {
@@ -106,6 +107,11 @@ require "nvim-web-devicons".setup {
             icon = "",
             color = colors.orange,
             name = "rpm"
+        },
+        lua = {
+            icon = "",
+            color = colors.blue,
+            name = "lua"
         }
     }
 }

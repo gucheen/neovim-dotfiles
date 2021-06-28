@@ -1,50 +1,170 @@
 local packer = require("packer")
 local use = packer.use
 
--- using { } for using different branch , loading plugin with certain commands etc
 return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
-        -- color related stuff
-        use "norcalli/nvim-colorizer.lua"
-
-        -- lang stuff
-        use "nvim-treesitter/nvim-treesitter"
-        use "neovim/nvim-lspconfig"
-        use "hrsh7th/nvim-compe"
-        use "onsails/lspkind-nvim"
-        use "sbdchd/neoformat"
-        use "nvim-lua/plenary.nvim"
-        use "kabouzeid/nvim-lspinstall"
-
-        use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
-        use "windwp/nvim-autopairs"
-        use "alvan/vim-closetag"
 
-        -- Comment
-        use "terrortylor/nvim-comment"
+        -- color related stuff
+        use {
+            "norcalli/nvim-colorizer.lua",
+            event = "BufRead",
+            config = function()
+                require("colorizer").setup()
+                vim.cmd("ColorizerReloadAllBuffers")
+            end
+        }
 
-        -- snippet support
-        use "hrsh7th/vim-vsnip"
-        use "rafamadriz/friendly-snippets"
+        -- language related plugins
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            event = "BufRead",
+            config = function()
+                require("treesitter-nvim").config()
+            end
+        }
+
+        use {
+            "neovim/nvim-lspconfig",
+            event = "BufRead",
+            config = function()
+                require("nvim-lspconfig").config()
+            end
+        }
+
+        use "kabouzeid/nvim-lspinstall"
+
+        use {
+            "onsails/lspkind-nvim",
+            event = "BufRead",
+            config = function()
+                require("lspkind").init()
+            end
+        }
+
+        -- load compe in insert mode only
+        use {
+            "hrsh7th/nvim-compe",
+            event = "InsertEnter",
+            config = function()
+                require("compe-completion").config()
+            end,
+            wants = {"LuaSnip"},
+            requires = {
+                {
+                    "L3MON4D3/LuaSnip",
+                    wants = "friendly-snippets",
+                    event = "InsertCharPre",
+                    config = function()
+                        require("compe-completion").snippets()
+                    end
+                },
+                "rafamadriz/friendly-snippets"
+            }
+        }
+
+        use {"sbdchd/neoformat", cmd = "Neoformat"}
 
         -- file managing , picker etc
-        use "kyazdani42/nvim-tree.lua"
+        use {
+            "kyazdani42/nvim-tree.lua",
+            cmd = "NvimTreeToggle",
+            config = function()
+                require("nvimTree").config()
+            end
+        }
+
         use "kyazdani42/nvim-web-devicons"
-        use "ryanoasis/vim-devicons"
-        use "nvim-lua/popup.nvim"
+        use {
+            "nvim-telescope/telescope.nvim",
+            requires = {
+                {"nvim-lua/popup.nvim"},
+                {"nvim-lua/plenary.nvim"},
+                {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
+                {"nvim-telescope/telescope-media-files.nvim"}
+            },
+            cmd = "Telescope",
+            config = function()
+                require("telescope-nvim").config()
+            end
+        }
 
-        -- misc
-        use "tweekmonster/startuptime.vim"
-        use "907th/vim-auto-save"
-        use "karb94/neoscroll.nvim"
-        use "folke/which-key.nvim"
-        use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+        -- git stuff
+        use {
+            "lewis6991/gitsigns.nvim",
+            event = "BufRead",
+            config = function()
+                require("gitsigns-nvim").config()
+            end
+        }
 
-        use 'ayu-theme/ayu-vim'
+        -- misc plugins
+        use {
+            "windwp/nvim-autopairs",
+            event = "InsertEnter",
+            config = function()
+                require("nvim-autopairs").setup()
+            end
+        }
+
+        use {"andymass/vim-matchup", event = "CursorMoved"}
+
+        use {
+            "terrortylor/nvim-comment",
+            cmd = "CommentToggle",
+            config = function()
+                require("nvim_comment").setup()
+            end
+        }
+
+        use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
+
+        -- load autosave only if its globally enabled
+        use {
+            "907th/vim-auto-save",
+            cond = function()
+                return vim.g.auto_save == 1
+            end
+        }
+
+        -- smooth scroll
+        use {
+            "karb94/neoscroll.nvim",
+            event = "WinScrolled",
+            config = function()
+                require("neoscroll").setup()
+            end
+        }
+
+        use {
+            "kdav5758/TrueZen.nvim",
+            cmd = {"TZAtaraxis", "TZMinimalist"},
+            config = function()
+                require("zenmode").config()
+            end
+        }
+
+        --   use "alvan/vim-closetag" -- for html autoclosing tag
+
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            branch = "lua",
+            event = "BufRead",
+            setup = function()
+                require("misc-utils").blankline()
+            end
+        }
+
+        use {
+            'ayu-theme/ayu-vim'
+            config = function()
+                g.ayucolor = "dark"
+                cmd "colorscheme ayu"
+            end
+        }
     end,
     {
         display = {
