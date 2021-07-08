@@ -11,12 +11,13 @@ opt.mouse = "a"
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.updatetime = 250 -- update interval for gitsigns
+opt.timeoutlen = 200
 opt.clipboard = "unnamedplus"
 
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
--- opt("w", "relativenumber", true)
+-- opt.relativenumber = true
 
 -- for indenline
 opt.expandtab = true

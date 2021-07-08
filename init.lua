@@ -6,7 +6,7 @@ require "top-bufferline"
 local g = vim.g
 
 g.mapleader = " "
-g.auto_save = 0
+g.auto_save = false
 
 g.nvchad_theme = "onedark"
 g.ayucolor = "dark"

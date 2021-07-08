@@ -93,9 +93,15 @@ return packer.startup(
         -- misc plugins
         use {
             "windwp/nvim-autopairs",
-            event = "InsertEnter",
+            after = "nvim-compe",
             config = function()
                 require("nvim-autopairs").setup()
+                require("nvim-autopairs.completion.compe").setup(
+                    {
+                        map_cr = true,
+                        map_complete = true -- insert () func completion
+                    }
+                )
             end
         }
 
@@ -113,9 +119,12 @@ return packer.startup(
 
         -- load autosave only if its globally enabled
         use {
-            "907th/vim-auto-save",
+            "Pocco81/AutoSave.nvim",
+            config = function()
+                require("zenmode").autoSave()
+            end,
             cond = function()
-                return vim.g.auto_save == 1
+                return vim.g.auto_save == true
             end
         }
 
@@ -129,8 +138,8 @@ return packer.startup(
         }
 
         use {
-            "kdav5758/TrueZen.nvim",
-            cmd = {"TZAtaraxis", "TZMinimalist"},
+            "Pocco81/TrueZen.nvim",
+            cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
                 require("zenmode").config()
             end
@@ -140,7 +149,6 @@ return packer.startup(
 
         use {
             "lukas-reineke/indent-blankline.nvim",
-            branch = "lua",
             event = "BufRead",
             setup = function()
                 require("misc-utils").blankline()
